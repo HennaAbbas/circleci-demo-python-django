@@ -70,8 +70,8 @@ workflows:
       - build:  
           context:
             - SLACK_SECRETS
-      - test_job_1:
-          type: approval
+      - test_job_1
+       
       - test_job_2:
             requires: 
               - test_job_1      
