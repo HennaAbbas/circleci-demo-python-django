@@ -20,8 +20,10 @@ jobs:
           fingerprints: 
             "83:54:85:e4:8f:45:9f:af:91:92:29:48:51:33:47:cb"
       - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+#       - run: sudo chown -R circleci:circleci /usr/local/bin
+#       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run: sudo chown -R  /usr/local/bin
+      - run: sudo chown -R  /usr/local/lib/python3.6/site-packages
       - restore_cache:
           key: deps10-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       - run:
