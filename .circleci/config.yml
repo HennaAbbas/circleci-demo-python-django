@@ -75,8 +75,11 @@ workflows:
       - build:  
           context:
             - SLACK_SECRETS
-      - test_job_1
-
-      - test_job_2
+  my_other_workflow:
+    jobs:
+      - build: 
+          name: build
+          context:
+            - SLACK_SECRETS      
      
 
