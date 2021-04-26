@@ -10,6 +10,7 @@ jobs:
         environment:
           PIPENV_VENV_IN_PROJECT: true
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
+          my_var: hello
       - image: circleci/postgres:9.6.2
         environment:
           POSTGRES_USER: root
@@ -18,6 +19,7 @@ jobs:
     steps:
 
       - checkout
+      - run: echo $my_var
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - restore_cache:
