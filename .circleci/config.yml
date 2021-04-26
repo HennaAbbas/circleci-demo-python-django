@@ -47,6 +47,35 @@ jobs:
           template: basic_fail_1
           event: always
           mentions: '@henna'  
+      - slack/notify:
+          event: fail
+          custom: |
+            {
+              "text": "Android testing on nightly region failed.",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Nightly android sdk test failed. :red_circle:",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }          
 
   test_job_1:
     working_directory: ~/circleci-demo-python-django
@@ -77,7 +106,7 @@ workflows:
             - SLACK_SECRETS
   my_other_workflow:
     jobs:
-      - build: 
+      - build:      
           name: build
           context:
             - SLACK_SECRETS      
