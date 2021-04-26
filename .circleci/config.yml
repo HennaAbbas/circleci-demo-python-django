@@ -46,6 +46,7 @@ jobs:
           event: always
           mentions: '@henna'  
       - slack/notify:
+          channel: C01UNEMA472
           event: fail
           custom: |
             {
