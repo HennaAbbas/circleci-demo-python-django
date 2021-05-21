@@ -111,15 +111,15 @@ workflows:
           name: build
           context:
             - SLACK_SECRETS      
-  nightly:
-    triggers:
-      - schedule:
-          cron: "* * * * *"
-          filters:
-            branches:
-              only:
-                - master
-                - beta
+#   nightly:
+#     triggers:
+#       - schedule:
+#           cron: "* * * * *"
+#           filters:
+#             branches:
+#               only:
+#                 - master
+#                 - beta
     jobs:
       - build:      
           name: build
