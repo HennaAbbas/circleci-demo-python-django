@@ -107,10 +107,8 @@ workflows:
             - SLACK_SECRETS
   my_other_workflow:
     jobs:
-      - build:      
-          name: build
-          context:
-            - SLACK_SECRETS      
+      - test_job_2:     
+          type: approval     
 #   nightly:
 #     triggers:
 #       - schedule:
@@ -120,10 +118,6 @@ workflows:
 #               only:
 #                 - master
 #                 - beta
-    jobs:
-      - build:      
-          name: build
-          context:
-            - SLACK_SECRETS
+
 
 #test
