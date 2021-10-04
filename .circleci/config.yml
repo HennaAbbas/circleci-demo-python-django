@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
-  slack: circleci/slack@4.0.0
+  slack: circleci/slack@4
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build:
@@ -77,7 +78,16 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-          destination: tr2          
+          destination: tr2      
+
+  heroku_test:
+    machine: true
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          name: Backup database
+          command: heroku pg:backups:capture --app test-app          
 
 
 workflows:
