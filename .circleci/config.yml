@@ -88,7 +88,7 @@ jobs:
       - heroku/install
       - run:
           name: Backup database
-          command: heroku pg:backups:capture --app test-app          
+          command: heroku pg:backups:capture --app circle_test          
 
 
 workflows:
@@ -97,5 +97,6 @@ workflows:
       - build:  
           context:
             - SLACK_SECRETS
-      - build_2       
+      - build_2 
+      - heroku_test
 
