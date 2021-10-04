@@ -78,7 +78,8 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-          destination: tr2      
+          destination: tr2     
+          #test
 
   heroku_test:
     machine: true
