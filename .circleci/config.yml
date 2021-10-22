@@ -345,6 +345,12 @@ commands:
           event: pass
 
 jobs:
+  test:
+    docker: 
+      - image: docker:19.03.8-git
+      
+      steps: 
+        - run: echo "hello world!"
   build:
     working_directory: ~/circleci-demo-python-django
     docker:
@@ -401,9 +407,11 @@ jobs:
 workflows:
   my_workflow:
     jobs:
-      - build:  
-          context:
-            - SLACK_SECRETS
+      - test
+#       - build:  
+#           context:
+#             - SLACK_SECRETS
+  
     
 
 #test
