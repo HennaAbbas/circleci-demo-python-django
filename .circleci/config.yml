@@ -74,7 +74,7 @@ commands:
                         "type": "plain_text",
                         "text": "Click Here to Check Artifacts"
                       },
-                      "url": "${CIRCLE_BUILD_URL}"
+                      "url": "${ARTIFACT_URL}"
                     }
                   ]
                 }
@@ -122,6 +122,11 @@ jobs:
           template: basic_fail_1
           mentions: '@henna' 
           channel: HENNA-test-channel
+          
+      - run: 
+          command: |
+            artifact_url=CIRCLE_BUILD_URL
+            echo "export ARTIFACT_URL=${artifact_url}" >> $BASH_ENV    
       - slack_build_notification:
           buildName: Production Build $APP_VERSION_ENV
           slackChannel: $SLACK_NOTIFICATION_CHANNEL_PRODUCTION
