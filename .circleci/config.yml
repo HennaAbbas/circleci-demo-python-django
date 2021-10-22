@@ -127,9 +127,10 @@ jobs:
           command: |
             artifact_url=CIRCLE_BUILD_URL
             echo "export ARTIFACT_URL=${artifact_url}" >> $BASH_ENV    
+            echo "export APP_VERSION_ENV=1.0.0" >> $BASH_ENV
       - slack_build_notification:
           buildName: Production Build $APP_VERSION_ENV
-          slackChannel: $SLACK_NOTIFICATION_CHANNEL_PRODUCTION
+          slackChannel: $SLACK_DEFAULT_CHANNEL
           artifactUrl: $ARTIFACT_URL
 #test
          
