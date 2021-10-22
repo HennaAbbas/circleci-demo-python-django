@@ -20,6 +20,7 @@ jobs:
 
     steps:
       - checkout
+      - run: echo $ARTIFACT_URL
       - slack/notify:
           custom: |
             {
