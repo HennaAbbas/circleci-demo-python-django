@@ -22,6 +22,7 @@ commands:
         default: "N/A"
     steps:
       - run : echo << parameters.slackChannel >>
+      - run: echo ${ARTIFACT_URL}    
       - slack/notify:
           channel: << parameters.slackChannel >>
           custom: |
@@ -122,7 +123,7 @@ jobs:
           template: basic_fail_1
           mentions: '@henna' 
           channel: HENNA-test-channel
-          
+      - run: echo ${ARTIFACT_URL}              
       - run: 
           command: |
             artifact_url=$CIRCLE_BUILD_URL
@@ -132,6 +133,7 @@ jobs:
           buildName: Production Build $APP_VERSION_ENV
           slackChannel: $SLACK_DEFAULT_CHANNEL
           artifactUrl: $ARTIFACT_URL
+      - run: echo ${ARTIFACT_URL}    
 #test
          
 
