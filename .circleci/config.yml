@@ -1,6 +1,83 @@
 version: 2.1
 orbs:
   slack: circleci/slack@4.0.0
+  
+commands:
+  slack_build_notification:
+    description: Sending notification message to Slack
+    parameters:
+      buildName:
+        description: a message that decribes build basic info
+        type: string
+        default: "N/A"
+      slackChannel:
+        description: destination Slack channel of the notification
+        type: string
+        default: "N/A"
+      artifactUrl:
+        description: http url of the output build artifact
+        type: string
+        default: "N/A"
+    steps:
+      - slack/notify:
+          channel: << parameters.slackChannel >>
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "<< parameters.buildName >> Succeeded. :white_check_mark:",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Project*:\n$CIRCLE_PROJECT_REPONAME"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Branch*:\n$CIRCLE_BRANCH"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Author*:\n$CIRCLE_USERNAME"
+                    }
+                  ]
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Click Here to Check Artifacts"
+                      },
+                      "url": "${ARTIFACT_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+          event: pass
 
 jobs:
   build:
@@ -42,6 +119,11 @@ jobs:
           template: basic_fail_1
           mentions: '@henna' 
           channel: HENNA-test-channel
+      - slack_build_notification:
+          buildName: Production Build $APP_VERSION_ENV
+          slackChannel: $SLACK_NOTIFICATION_CHANNEL_PRODUCTION
+
+         
 
 
 workflows:
