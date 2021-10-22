@@ -347,10 +347,10 @@ commands:
 jobs:
   test:
     docker: 
-      - image: docker:19.03.8-git
+      - image: amazon/aws-cli
       
-      steps: 
-        - run: echo "hello world!"
+    steps: 
+      - run: echo "hello world!"
   build:
     working_directory: ~/circleci-demo-python-django
     docker:
