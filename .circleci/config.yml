@@ -10,7 +10,7 @@ workflows:
     jobs:
       - build:
           context:
-            - slack-secrets
+            - SLACK_SECRETS
 jobs:
   build:
     docker:
