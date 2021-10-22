@@ -126,7 +126,6 @@ jobs:
           slackChannel: $SLACK_NOTIFICATION_CHANNEL_PRODUCTION
 
          
-#test
 
 workflows:
   my_workflow:
