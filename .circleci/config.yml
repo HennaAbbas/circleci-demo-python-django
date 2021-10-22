@@ -74,7 +74,7 @@ commands:
                         "type": "plain_text",
                         "text": "Click Here to Check Artifacts"
                       },
-                      "url": "${ARTIFACT_URL}"
+                      "url": "${CIRCLE_BUILD_URL}"
                     }
                   ]
                 }
