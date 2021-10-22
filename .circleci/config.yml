@@ -21,6 +21,7 @@ commands:
         type: string
         default: "N/A"
     steps:
+      - run : echo << parameters.slackChannel >>
       - slack/notify:
           channel: << parameters.slackChannel >>
           custom: |
