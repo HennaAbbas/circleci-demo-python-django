@@ -35,7 +35,7 @@ jobs:
             sudo pip install pipenv
             pipenv install
       - save_cache:
-          key: deps10-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps10-{{ .Branch }}
           paths:
             - '.venv'
             - '/usr/local/bin'
