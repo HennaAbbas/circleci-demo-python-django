@@ -52,7 +52,7 @@ jobs:
 #           mentions: '@henna'  
       - slack/notify:
 #           channel: C01UNEMA472
-          event: fail
+          event: always
           custom: |
             {
               "text": "Android testing on nightly region failed.",
