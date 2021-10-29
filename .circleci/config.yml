@@ -56,7 +56,6 @@ jobs:
           custom: |
             {
               "text": "<https://api.slack.com>",
-              "unfurl_links": false ,
               "blocks": [
                 {
                   "type": "header",
