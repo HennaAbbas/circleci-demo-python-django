@@ -62,7 +62,7 @@ jobs:
                   "text": {
                     "type": "plain_text",
                     "text": "<https://api.slack.com>",
-                    "unfurl_links": false ,
+                    "unfurl_links": false,
                     "emoji": true
                   }
                 },
