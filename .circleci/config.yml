@@ -55,7 +55,7 @@ jobs:
           event: always
           custom: |
             {
-              "text": "Android testing on nightly region failed.",
+              "text": "<https://api.slack.com>",
               "blocks": [
                 {
                   "type": "header",
