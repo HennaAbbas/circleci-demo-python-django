@@ -56,12 +56,14 @@ jobs:
           custom: |
             {
               "text": "<https://api.slack.com>",
+              "unfurl_links": true ,
               "blocks": [
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
                     "text": "<https://api.slack.com>",
+                    "unfurl_links": true ,
                     "emoji": true
                   }
                 },
