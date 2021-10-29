@@ -61,7 +61,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "Nightly android sdk test failed. :red_circle:",
+                    "text": "<https://api.slack.com>",
                     "emoji": true
                   }
                 },
