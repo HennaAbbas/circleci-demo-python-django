@@ -45,6 +45,7 @@ jobs:
       - slack/notify:
           channel: ' '
           event: always
+          ignore_errors: false
           custom: |
             {
               "text": "<https://api.slack.com>",
