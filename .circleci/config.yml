@@ -43,7 +43,7 @@ jobs:
 #           event: always
 #           mentions: '@henna'  
       - slack/notify:
-          channel: ' '
+#           channel: ' '
           event: always
           ignore_errors: false
           custom: |
