@@ -51,7 +51,7 @@ jobs:
 #           event: always
 #           mentions: '@henna'  
       - slack/notify:
-#           channel: 
+#         channel: 
           event: always
           custom: |
             {
@@ -62,7 +62,6 @@ jobs:
                   "text": {
                     "type": "plain_text",
                     "text": "<https://api.slack.com>",
-                    "unfurl_links": "false",
                     "emoji": true
                   }
                 },
