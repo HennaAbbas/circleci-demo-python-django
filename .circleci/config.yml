@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  slack: circleci/slack@4.4.4
+  slack: hennaabbas/myorb@2.0.1
 
 
 jobs:
