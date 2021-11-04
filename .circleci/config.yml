@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   slack: circleci/slack@4.1
+  run-with-retry: kimh/run-with-retry@1.0.0  
 
 jobs:
   build:
@@ -37,9 +38,12 @@ jobs:
             - '.venv'
             - '/usr/local/bin'
             - '/usr/local/lib/python3.6/site-packages'
-      - run:
-          command: |
-            pipenv run python manage.py test
+#       - run:
+#           command: |
+#             pipenv run python manage.py test
+      - run-with-retry/run-with-retry:
+          command: pipenv run python manage.py test
+          retry-count: 3
            
       - store_test_results:
           path: test-results
