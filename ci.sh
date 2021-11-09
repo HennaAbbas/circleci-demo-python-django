@@ -1,4 +1,4 @@
 
 #!/bin/bash -e
 
-return  "hello world"
+echo "hello world"
