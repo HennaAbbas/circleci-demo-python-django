@@ -24,7 +24,8 @@ jobs:
       - run: ls
       - run : chmod +x ci.sh
       - run : ./ci.sh
-      - run: echo $my_var
+      - run : echo 'export VERY_IMPORTANT=$(./ci.sh)' >> $BASH_ENV
+      - run: echo $VERY_IMPORTANT
 #       - setup_remote_docker:
 #           version: 20.10.2
 #           docker_layer_caching: true                 
