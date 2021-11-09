@@ -22,6 +22,7 @@ jobs:
       - checkout
       - run: pwd
       - run: ls
+      - run : chmod +x ci.sh
       - run : ./ci.sh
       - run: echo $my_var
 #       - setup_remote_docker:
