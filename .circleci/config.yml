@@ -83,7 +83,7 @@ jobs:
                         "type": "plain_text",
                         "text": "View Job"
                       },
-                      "url": "${CIRCLE_BUILD_URL}"
+                      "url": "https://bitbucket.org/ed-app/ed/branches/compare/${CIRCLE_SHA1}%0D${LAST_SUCCESSFUL_COMMIT}#commits"
                     }
                   ]
                 }
