@@ -19,16 +19,7 @@ jobs:
     parallelism: 3      
     steps:
 
-      - checkout
-      - run: pwd
-      - run: ls
-      - run : chmod +x ci.sh
-      - run : ./ci.sh
-      - run : echo 'export VERY_IMPORTANT=$(./ci.sh)' >> $BASH_ENV
-      - run: echo $VERY_IMPORTANT
-#       - setup_remote_docker:
-#           version: 20.10.2
-#           docker_layer_caching: true                 
+      - checkout               
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - restore_cache:
