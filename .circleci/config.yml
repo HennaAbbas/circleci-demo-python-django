@@ -59,36 +59,36 @@ jobs:
 #           template: basic_fail_1
 #           event: always
 #           mentions: '@henna'  
-      - slack/notify:
-#         channel: 
-          event: always
-          custom: |
-            {
-              "text": "<https://api.slack.com>",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "<https://api.slack.com>",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "View Job"
-                      },
-                      "url": "https://bitbucket.org/ed-app/ed/branches/compare/${CIRCLE_SHA1}%0D${LAST_SUCCESSFUL_COMMIT}#commits"
-                    }
-                  ]
-                }
-              ]
-            }          
+      - slack/notify
+# #         channel: 
+#           event: always
+#           custom: |
+#             {
+#               "text": "<https://api.slack.com>",
+#               "blocks": [
+#                 {
+#                   "type": "header",
+#                   "text": {
+#                     "type": "plain_text",
+#                     "text": "<https://api.slack.com>",
+#                     "emoji": true
+#                   }
+#                 },
+#                 {
+#                   "type": "actions",
+#                   "elements": [
+#                     {
+#                       "type": "button",
+#                       "text": {
+#                         "type": "plain_text",
+#                         "text": "View Job"
+#                       },
+#                       "url": "https://bitbucket.org/ed-app/ed/branches/compare/${CIRCLE_SHA1}%0D${LAST_SUCCESSFUL_COMMIT}#commits"
+#                     }
+#                   ]
+#                 }
+#               ]
+#             }          
 
   test_job_1:
     working_directory: ~/circleci-demo-python-django
