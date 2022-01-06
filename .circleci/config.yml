@@ -37,21 +37,21 @@ jobs:
 #       - run:
 #           command: |
 #             pipenv run python manage.py test
-      - run-with-retry/run-with-retry:
-          command: pipenv run python manage.py test
-          retry-count: 3
+#       - run-with-retry/run-with-retry:
+#           command: pipenv run python manage.py test
+#           retry-count: 3
            
       - store_test_results:
           path: test-results
       - store_artifacts:
           path: test-results
           destination: tr1
+#       - slack/notify:
+#           template: basic_success_1
+#           event: always
+#           mentions: '@henna'  
       - slack/notify:
           template: basic_success_1
-          event: always
-          mentions: '@henna'  
-      - slack/notify:
-          template: basic_on_hold_1
           event: always
           mentions: '@henna'            
 #       - slack/notify
