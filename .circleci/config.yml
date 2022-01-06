@@ -54,7 +54,7 @@ jobs:
           template: basic_success_1
           event: always
           mentions: '@henna' 
-          channel: 
+          channel: " "
 #       - slack/notify
 # #         channel: 
 #           event: always
