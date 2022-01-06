@@ -55,7 +55,7 @@ jobs:
           event: always
           mentions: '@henna' 
           channel: " "
-          debug: true
+
 #       - slack/notify
 # #         channel: 
 #           event: always
