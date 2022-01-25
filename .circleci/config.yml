@@ -50,11 +50,11 @@ jobs:
 #           template: basic_success_1
 #           event: always
 #           mentions: '@henna'  
-      - slack/notify:
-          template: basic_success_1
-          event: always
-          mentions: '@henna' 
-          channel: " "
+#       - slack/notify:
+#           template: basic_success_1
+#           event: always
+#           mentions: '@henna' 
+#           channel: " "
 
 #       - slack/notify
 # #         channel: 
