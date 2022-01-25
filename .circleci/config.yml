@@ -50,15 +50,11 @@ jobs:
 #           template: basic_success_1
 #           event: always
 #           mentions: '@henna'  
-#       - slack/notify:
-#           template: basic_success_1
-#           event: always
-#           mentions: '@henna' 
-#           channel: " "
-#       - run:
-#           name: Define Environment Variable at Runtime
-#           command: |
-#             echo 'export MY_VAR=THIS_IS_WORKING' >> $BASH_ENV
+      - slack/notify:
+          template: basic_success_1
+          event: always
+          mentions: '@henna' 
+          channel: " "
 
 #       - slack/notify
 # #         channel: 
@@ -82,7 +78,7 @@ jobs:
 #                       "type": "button",
 #                       "text": {
 #                         "type": "plain_text",
-#                         "text": "View Job : ${MY_VAR}"
+#                         "text": "View Job"
 #                       },
 #                       "url": "https://bitbucket.org/ed-app/ed/branches/compare/${CIRCLE_SHA1}%0D${LAST_SUCCESSFUL_COMMIT}#commits"
 #                     }
@@ -122,14 +118,6 @@ workflows:
     jobs:
       - test_job_2:     
           type: approval     
-#   nightly:
-#     triggers:
-#       - schedule:
-#           cron: "* * * * *"
-#           filters:
-#             branches:
-#               only:
-#                 - master
-#                 - beta
+
 
 
