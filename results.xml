@@ -1,0 +1,53 @@
+<testsuite name="catalog.tests.test_forms.RenewBookFormTest-20220210000303" tests="6" file="catalog/tests/test_forms.py" time="0.013" timestamp="2022-02-10T00:03:03" failures="1" errors="0" skipped="0">
+<testcase classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_field_help_text" time="0.007" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="57" source="my_source">
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+<testcase source="my_source" classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_field_label" time="0.001" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="49">
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+<testcase classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_in_past" time="0.001" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="11">
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+<testcase classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_max" time="0.001" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="39">
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+<testcase classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_too_far_in_future" time="0.001" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="20">
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+<testcase classname="catalog.tests.test_forms.RenewBookFormTest" name="test_renew_form_date_today" time="0.003" timestamp="2022-02-10T00:03:03" file="catalog/tests/test_forms.py" line="29">
+<failure type="AssertionError" message="False is not true">
+<![CDATA[ Traceback (most recent call last): File "/home/circleci/project/catalog/tests/test_forms.py", line 37, in test_renew_form_date_today self.assertTrue(form.is_valid()) AssertionError: False is not true ]]>
+</failure>
+<system-out>
+<![CDATA[ ]]>
+</system-out>
+<system-err>
+<![CDATA[ ]]>
+</system-err>
+</testcase>
+</testsuite>
