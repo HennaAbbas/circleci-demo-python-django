@@ -29,6 +29,14 @@ jobs:
           paths:
             - .
  
+ 
+   test: # this can be any name you choose
+    docker:
+      - image: cimg/python:3.10.1
+    steps:
+      - run: wqr
+      - run: echo "hello world"
+
   deploy: # this can be any name you choose
     docker:
       - image: cimg/python:3.10.1
@@ -42,6 +50,12 @@ workflows:
   on_commit:
     jobs:
       - build_and_test
+      - test: 
+          requires:
+            - build_and_test
+      - deploy
+          requires:
+            - test  
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
       # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
       # Read more: https://circleci.com/docs/2.0/env-vars/
@@ -51,16 +65,8 @@ workflows:
       #     filters:
       #       branches:
       #         only: master # only deploy when on main/master
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"       
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build_and_test
+
+
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
       # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
       # Read more: https://circleci.com/docs/2.0/env-vars/
