@@ -76,7 +76,7 @@ jobs:
           name: renamed test result step
           path: test-results
       - store_artifacts:
-          path: test-results
+          path: $test
           destination: $CI/tr2          
 
 
