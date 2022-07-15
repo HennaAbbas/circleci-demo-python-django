@@ -38,6 +38,10 @@ jobs:
       - store_artifacts:
           path: test-results
           destination: tr1
+      - run:
+          name: set REPO_NAME, USERNAME and BUILD_NUMBER
+          command: "if [ -n \"\" ]; then\n  echo \"export REPO_NAME=''\" >> $BASH_ENV\nelse\n  echo \"export REPO_NAME='$CIRCLE_PROJECT_REPONAME'\" >> $BASH_ENV              \nfi\nif [ 0 -eq 0 ]; then\n  echo \"export BUILD_NUMBER =0\" >> $BASH_ENV\nelse\n  echo \"export BUILD_NUMBER=$CIRCLE_BUILD_NUM\" >> $BASH_ENV              \nfi\n if [ -n \"\" ]; then\n  echo \"export USERNAME =''\" >> $BASH_ENV\nelse\n  echo \"export USERNAME='$CIRCLE_USERNAME'\" >> $BASH_ENV              \nfi\n"
+          when: always          
       - slack/notify:
           template: basic_fail_1
           mentions: '@henna' 
