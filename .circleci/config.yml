@@ -12,41 +12,41 @@ commands:
             git submodule sync --recursive
             git submodule update --init --recursive
 
-  pre-steps:
-    steps:
-      - checkout
-      - update-submodules
-      - run:
-          name: "Setup Environment"
-          command: |
-            # Calculate ccache key.
-            git show -s --format=%cd --date="format:%Y%m%d" $(git merge-base origin/main HEAD) | tee merge-base-date
+#   pre-steps:
+#     steps:
+#       - checkout
+#       - update-submodules
+#       - run:
+#           name: "Setup Environment"
+#           command: |
+#             # Calculate ccache key.
+#             git show -s --format=%cd --date="format:%Y%m%d" $(git merge-base origin/main HEAD) | tee merge-base-date
 
-            # Set up xml gtest output. 
-            mkdir -p /tmp/test_xml_output/
-            echo "export XML_OUTPUT_FILE=\"/tmp/test_xml_output/\"" >> $BASH_ENV
+#             # Set up xml gtest output. 
+#             mkdir -p /tmp/test_xml_output/
+#             echo "export XML_OUTPUT_FILE=\"/tmp/test_xml_output/\"" >> $BASH_ENV
 
-            # Set up ccache configs.
-            mkdir -p .ccache
-            echo "export CCACHE_DIR=$(realpath .ccache)" >> $BASH_ENV
-            ccache -sz -M 5Gi
-            source /opt/rh/gcc-toolset-9/enable
-      - restore_cache:
-          name: "Restore CCache Cache"
-          keys:
-            - velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
+#             # Set up ccache configs.
+#             mkdir -p .ccache
+#             echo "export CCACHE_DIR=$(realpath .ccache)" >> $BASH_ENV
+#             ccache -sz -M 5Gi
+#             source /opt/rh/gcc-toolset-9/enable
+#       - restore_cache:
+#           name: "Restore CCache Cache"
+#           keys:
+#             - velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
 
-  post-steps:
-    steps:
-      - save_cache:
-          name: "Save CCache Cache"
-          key: velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
-          paths:
-            - .ccache/
-      - store_artifacts:
-          path: '_build/debug/.ninja_log'
-      - store_test_results:
-          path: '/tmp/test_xml_output/'  
+#   post-steps:
+#     steps:
+#       - save_cache:
+#           name: "Save CCache Cache"
+#           key: velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
+#           paths:
+#             - .ccache/
+#       - store_artifacts:
+#           path: '_build/debug/.ninja_log'
+#       - store_test_results:
+#           path: '/tmp/test_xml_output/'  
   
 jobs:
   build_and_test: # this can be any name you choose
@@ -65,10 +65,10 @@ jobs:
 #       - run:
 #           name: Run tests
 #           command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
-#       - store_test_results:
-#           path: 'results.xml'
       - store_test_results:
-          path: '/tmp/test_xml_output/'
+          path: 'results.xml'
+#       - store_test_results:
+#           path: '/tmp/test_xml_output/'
       - store_artifacts:
           path: test-results
           destination: tr1
