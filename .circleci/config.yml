@@ -32,7 +32,6 @@ jobs:
     docker:
       - image: cimg/python:3.10.1
     steps:
-      - run: wqr
       - run: echo "hello world"
 
 
