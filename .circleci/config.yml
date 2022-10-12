@@ -1,25 +1,73 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-
 version: 2.1
 orbs:
-  slack: circleci/slack@4.4.4
-workflows:
-  my-workflow:
-    jobs:
-      - build:
-          context:
-            - SLACK_SECRETS
+  python: circleci/python@1.5.0
+  heroku: circleci/heroku@1.2.6
 jobs:
-  build:
+  build_and_test: # this can be any name you choose
     docker:
-      - image: cimg/node:17.0.1
-
-    working_directory: ~/repo
-
+      - image: cimg/python:3.10.1
+        environment:
+          DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
+      - image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
     steps:
       - checkout
-      - run: sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - run: brew install circlecicli 
-      - run: circleci config validate
+      - python/install-packages:
+          pkg-manager: pipenv
+      - run:
+          name: Run tests
+          command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: tr1
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+ 
+  deploy: # this can be any name you choose
+    docker:
+      - image: cimg/python:3.10.1
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - heroku/deploy-via-git: 
+          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+
+workflows:
+  on_commit:
+    jobs:
+      - build_and_test
+      # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
+      # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
+      # Read more: https://circleci.com/docs/2.0/env-vars/
+      # - deploy:
+      #     requires:
+      #       - build_and_test # only deploy if the build_and_test job has completed
+      #     filters:
+      #       branches:
+      #         only: master # only deploy when on main/master
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"       
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build_and_test
+      # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
+      # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
+      # Read more: https://circleci.com/docs/2.0/env-vars/
+      # - deploy:
+      #     requires:
+      #       - build_and_test # only deploy if the build_and_test job has completed
+      #     filters:
+      #       branches:
+      #         only: master # only deploy when on main/master
+
