@@ -73,9 +73,10 @@ jobs:
           path: test-results
           destination: tr1
       - persist_to_workspace:
-          root: ~/project
           paths:
             - .
+          root: .
+                     
   test: # this can be any name you choose
     docker:
       - image: cimg/python:3.10.1
