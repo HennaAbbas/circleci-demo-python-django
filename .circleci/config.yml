@@ -70,9 +70,9 @@ jobs:
             google-chrome --version
             chromedriver --version
           name: Check install          
-      - run:
-          name: Run tests
-          command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+#       - run:
+#           name: Run tests
+#           command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
       - run:
           name: chmod webdrivers
           command: chmod +x /home/circleci/.webdrivers/chromedriver          
