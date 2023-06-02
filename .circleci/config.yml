@@ -21,6 +21,7 @@ jobs:
     resource_class: macos.x86.medium.gen2  
     steps:
       - checkout
+      - run : pip install --upgrade pip
       - python/install-packages
 #       - browser-tools/install-chrome
 #       - browser-tools/install-chromedriver
