@@ -18,6 +18,7 @@ jobs:
   build_and_test: # this can be any name you choose
     macos:
       xcode: 14.3.0
+    resource_class: macos.x86.medium.gen2  
     steps:
       - checkout
       - python/install-packages:
