@@ -47,7 +47,7 @@ commands:
             - .ccache/
       - when:
           condition: 
-            equal: [ master, << parameters.branch >> ]
+            equal: [ master, << pipeline.parameters.branch >> ]
           steps:
             - run: echo "preinstall"  
             - save_cache:
