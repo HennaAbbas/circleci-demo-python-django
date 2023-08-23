@@ -38,12 +38,22 @@ commands:
 #             - velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
 
   post-steps:
+ 
     steps:
       - save_cache:
           name: "Save CCache Cache"
           key: velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
           paths:
             - .ccache/
+      - when:
+          condition: << parameters.preinstall-foo >>
+          steps:
+            - run: echo "preinstall"  
+            - save_cache:
+                name: "Save CCache Cache"
+                key: velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
+                paths:
+                  - .ccache/            
 #       - store_artifacts:
 #           path: '_build/debug/.ninja_log'
 #       - store_test_results:
