@@ -46,7 +46,8 @@ commands:
           paths:
             - .ccache/
       - when:
-          condition: << parameters.preinstall-foo >>
+          condition: 
+            equal: [ master, << parameters.branch >> ]
           steps:
             - run: echo "preinstall"  
             - save_cache:
