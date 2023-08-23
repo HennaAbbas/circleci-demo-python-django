@@ -72,6 +72,16 @@ jobs:
           POSTGRES_DB: circle_test
     steps:
       - checkout
+      - when:
+          condition:
+            equal: [ master, << parameters.branch >> ]          
+          steps:
+            - run: echo "preinstall"  
+            - save_cache:
+                name: "Save CCache Cache"
+                key: velox-ccache-debug-{{ arch }}-{{ checksum "merge-base-date" }}
+                paths:
+                  - .ccache/       
       - python/install-packages:
           pkg-manager: pipenv
       - browser-tools/install-chrome
