@@ -1,23 +1,8 @@
-# Use the official Python image from the Docker Hub
-FROM cimg/python:3.10.1
+FROM python:3.9-slim
 
-# Set the working directory
-WORKDIR /circleci-demo-python-django
-
-# Copy the requirements file
+WORKDIR /app
 COPY requirements.txt .
-
-RUN pwd
-RUN ls
-
-# Install dependencies
-RUN pip install -r requirements.txt
-
-# Copy the application code
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
-# Expose the port that the app runs on
-EXPOSE 5000
-
-# Command to run the application
-CMD ["python", "manage.py"]
+CMD ["python", "app.py"]
