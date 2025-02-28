@@ -25,11 +25,11 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pipenv
+      - snyk/scan          
       - run:
           name: Run tests
           command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
-      - snyk/install    
-      - snyk/scan
+   
       - store_test_results:
           path: results.xml
       - store_artifacts:
