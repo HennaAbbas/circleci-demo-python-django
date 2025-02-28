@@ -7,8 +7,11 @@ WORKDIR /circleci-demo-python-django
 # Copy the requirements file
 COPY requirements.txt .
 
+RUN pwd
+RUN ls
+
 # Install dependencies
-RUN pipenv install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the application code
 COPY . .
