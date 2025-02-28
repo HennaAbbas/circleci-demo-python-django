@@ -30,6 +30,7 @@ jobs:
       - run:
           name: Run tests
           command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+      - setup_remote_docker    
       - run:
           name: Create Docker Image
           command: |
