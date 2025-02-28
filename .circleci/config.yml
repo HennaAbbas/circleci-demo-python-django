@@ -30,6 +30,10 @@ jobs:
       - run:
           name: Run tests
           command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+      - run:
+          name: Create Docker Image
+          command: |
+            docker build -t my-app:latest .          
    
       - store_test_results:
           path: results.xml
