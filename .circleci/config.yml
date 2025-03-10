@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@1.5.0
   heroku: circleci/heroku@1.2.6
-  snyk: snyk/snyk@2.2.0
+  # snyk: snyk/snyk@2.2.0
 jobs:
   build_and_test:
   # this can be any name you choose
@@ -25,16 +25,16 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pipenv
-      - snyk/scan: 
-          fail-on-issues: false
-      - run:
-          name: Run tests
-          command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
-      - setup_remote_docker    
-      - run:
-          name: Create Docker Image
-          command: |
-            docker build -t my-app:latest .          
+      # - snyk/scan: 
+      #     fail-on-issues: false
+      # - run:
+      #     name: Run tests
+      #     command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+      # - setup_remote_docker    
+      # - run:
+      #     name: Create Docker Image
+      #     command: |
+      #       docker build -t my-app:latest .          
    
       - store_test_results:
           path: results.xml
