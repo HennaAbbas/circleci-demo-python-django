@@ -42,7 +42,7 @@ jobs:
           path: test-results
           destination: tr1
       - persist_to_workspace:
-          when: always
+          when: on_fail
           root: ~/project
           paths:
             - .
