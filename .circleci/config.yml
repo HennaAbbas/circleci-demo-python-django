@@ -6,7 +6,7 @@ orbs:
 jobs:
   build_and_test:
   # this can be any name you choose
-    parallelism: 50
+    parallelism: 500
     docker:
       - image: cimg/python:3.10.1
         environment:
