@@ -27,9 +27,9 @@ jobs:
           pkg-manager: pipenv
       # - snyk/scan: 
       #     fail-on-issues: false
-      # - run:
-      #     name: Run tests
-      #     command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
+      - run:
+          name: Run tests
+          command: pipenv run python manage.py test # alternatively run `python -m pytest` if you are running vanilla pytest
       # - setup_remote_docker    
       # - run:
       #     name: Create Docker Image
